@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
+  target: ["web", "es5"],
   entry: "./src/index.js",
   output: {
     path: path.resolve(__dirname, "docs"), // './dist'의 절대 경로를 리턴합니다.
@@ -21,6 +22,11 @@ module.exports = {
         exclude: /node_modules/,
       },
     ],
+  },
+  devServer: {
+    contentBase: __dirname + '/docs/',
+    host: 'localhost',
+    port: 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
